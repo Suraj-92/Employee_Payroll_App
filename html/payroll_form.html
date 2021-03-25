@@ -1,6 +1,4 @@
-<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +9,6 @@
     <script src="../js/Employee.js"></script>
     <script src="../js/payroll_form.js"></script>
 </head>
-
 <body>
     <header class="header-content header">
         <div class="logo-content">
@@ -22,5 +19,15 @@
                 </div>
             </div>
         </header>
+        <div class="form-content">
+            <form class="form" action="#" onreset="reset()" onsubmit="save(); return false">
+                <div class="form-head">
+                    Employee Payroll Form</div>
+                <div class="row-content row-content-name">
+                    <label class="label text">Name</label>
+                    <input class="input" type="text" id="name" name="name" placeholder="Your name..." required>
+                </div>
+            </form>
+        </div>
     </body>
 </html>
