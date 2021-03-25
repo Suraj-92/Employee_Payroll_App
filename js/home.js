@@ -1,13 +1,22 @@
+let empPayrollList;
 window.addEventListener("DOMContentLoaded", (event) => {
+    empPayrollList = getEmployeePayrollDataFromStorage();
+    document.querySelector(".emp-count").textContent = empPayrollList.length;
     createInnerHtml();
+    localStorage.removeItem("editEmp");
 });
 
+const getEmployeePayrollDataFromStorage = () => {
+    return localStorage.getItem('EmployeePayrollList') ?
+                                JSON.parse(localStorage.getItem('EmployeePayrollList')) : [];
+}
+
 const createInnerHtml = () => {
+    if (empPayrollList.length == 0) return;
     const headerHtml =
         "<tr><th></th><th>Name</th><th>Gender</th><th>Department</th>" +
         "<th>Salary</th><th>Start Date</th><th>Actions</th></tr>";
     let innerHtml = `${headerHtml} `;
-    let empPayrollList = createEmployeePayrollJSON();
     for (const employeePayrollData of empPayrollList) {
         innerHtml = `${innerHtml}
          <tr>
@@ -41,22 +50,22 @@ const getDeptHtml = (deptList) => {
 
 const createEmployeePayrollJSON = () => {
     let empPayrollListLocal = [{
-            _name: "Suraj Temkar",
-            _gender: "Male",
-            _department: ["HR", "Engineer"],
-            _salary: "400000",
-            _startDate: "10 Sep 2019",
+            _name: "Ash Roy",
+            _gender: "Female",
+            _department: ["HR", "sales"],
+            _salary: "500000",
+            _startDate: "21 Sep 2019",
             _id: new Date().getTime(),
-            _profilePic: "../assets/profile-images/Ellipse -3.png",
+            _profilePic: "../assets/profile-images/Ellipse -1.png",
         },
         {
-            _name: "Ash Roy ",
-            _gender: "Female",
+            _name: "Manish Pandey ",
+            _gender: "male",
             _department: ["HR", "Finance"],
-            _salary: "300000",
-            _startDate: "11 jan 2020",
+            _salary: "700000",
+            _startDate: "20 Dec 2019",
             _id: new Date().getTime(),
-            _profilePic: "../assets/profile-images/Ellipse -4.png",
+            _profilePic: "../assets/profile-images/Ellipse -5.png",
         },
     ];
     return empPayrollListLocal;
