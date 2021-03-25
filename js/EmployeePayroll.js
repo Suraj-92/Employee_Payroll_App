@@ -13,7 +13,7 @@ class EmployeePayrollData {
     }
 
     set name(name) {
-        let nameRegex = RegExp("^[A-Z]{1}[a-z]{2,}$");
+        let nameRegex = RegExp("^[A-Z]{1}[a-zA-Z\\s]{2,}$");
         if (nameRegex.test(name)) this._name = name;
         else throw "Name is incorrect!";
     }
@@ -65,9 +65,11 @@ class EmployeePayrollData {
         this._startDate = startDate;
     }
 
+    //method
     toString() {
         const option = { day: "numeric", month: "long", year: "number" };
-        const empDate = !this.startDate ? "undefined" :
+        const empDate = !this.startDate ?
+            "undefined" :
             this.startDate.toLocaleDateString("en-US", option);
         return (
             "id=" + this.id +
