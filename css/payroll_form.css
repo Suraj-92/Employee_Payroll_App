@@ -1,11 +1,12 @@
 body{
     margin: 0;
     height: 100%;
+    background: black;
 }
 
 .header{
     padding: 15px 0;
-    background-color: white;
+    background-color: rgb(39, 3, 73);
 }
 
 .header-content{
@@ -13,7 +14,7 @@ body{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border: 0px solid green;
+    border: 0px solid rgb(39, 3, 73);
 }
 
 .logo-content{
@@ -54,7 +55,7 @@ body{
 .form {
     width: 65%;
     padding: 44px 50px;
-    background: white;
+    background: black;
     box-shadow: 0px 3px 6px grey;
     border: 1px solid white;
     opacity: 1;
@@ -97,8 +98,9 @@ error-output{
 }
   
 .text {
-    font-size: 8px;
-    color: black;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
     opacity: 1;
     font-family: Roboto;
 }
@@ -189,4 +191,4 @@ button {
     background-color: green;
     margin-right: 26px;
     }
-}
+} 

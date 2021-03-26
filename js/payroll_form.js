@@ -57,16 +57,18 @@ const createEmployeePayroll = () => {
         setTextValue(".text-error", e);
         throw e;
     }
+
+    employeePayrollData.id = createId();
     employeePayrollData.profilePic = getSelectedValues("[name=profile]").pop();
     employeePayrollData.gender = getSelectedValues("[name=gender]").pop();
     employeePayrollData.department = getSelectedValues("[name=department]");
     employeePayrollData.salary = getInputValueById("#salary");
     employeePayrollData.note = getInputValueById("#notes");
-    let date = getInputValueById("#Day") + " " + 
-               getInputValueById("#Month") + " " + 
-               getInputValueById("#Year");
-    employeePayrollData.date = Date.parse(date);
-    console.log(Date.parse(date));
+    let date = getInputValueById("#day") + " " + 
+               getInputValueById("#month") + " " + 
+               getInputValueById("#year");
+    employeePayrollData.startDate = new Date (Date.parse(date));
+    alert(new Date (Date.parse(date)));
     alert(employeePayrollData.toString());
     return employeePayrollData;
 };
@@ -95,7 +97,7 @@ const resetForm = () => {
   unsetSelectedValues("[name=profile]");
   unsetSelectedValues("[name=gender]");
   unsetSelectedValues("[name=department]");
-  setValue("#salary", "20000");
+  setValue("#salary", "");
   setValue("notes", "");
   setValue("#day", "1");
   setValue("#month", "January");
@@ -118,3 +120,15 @@ const setValue = (id, value) => {
   const element = document.querySelector(id);
   element.value = value;
 }; 
+
+const createId = () => {
+    var id = localStorage.getItem("currentId");
+    if (id == undefined) {
+      localStorage.setItem("currentId", 1);
+      return 2;
+    } else {
+      id = id + 1;
+      localStorage.setItem("currentId", id);
+      return id;
+    }
+};
